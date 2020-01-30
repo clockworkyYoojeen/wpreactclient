@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HeroAreaSmall from './HeroAreaSmall'
+import HeroAreaSmall from '../parts/HeroAreaSmall'
 
 export default class AboutUs extends Component {
   render() {
