@@ -1,23 +1,10 @@
 import React from 'react'
+import HeroAreaPage from '../parts/HeroAreaPage'
 
 export default function Contact() {
     return (
         <div>
-<div className="page-header header-small">
-    <div className="container">
-    <div className="row">
-    <div className="col-md-12">
-    <div className="breadcrumb-wrapper">
-    <h2 className="product-title">Contact Us</h2>
-    <ol className="breadcrumb">
-    <li><a href="#">Home /</a></li>
-    <li className="current">Contact Us</li>
-    </ol>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+            <HeroAreaPage pageTitle="Contact" />
     
     
     <section id="google-map-area">

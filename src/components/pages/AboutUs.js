@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 import HeroAreaSmall from '../parts/HeroAreaSmall'
+import WidgetSearch from '../parts/WidgetSearch'
+import WidgetRecentPosts from '../parts/WidgetRecentPosts'
+import WidgetCategories from '../parts/WidgetCategories'
+import WidgetTagCloud from '../parts/WidgetTagCloud'
+import WidgetAdvertisement from '../parts/WidgetAdvertisement'
+import HeroAreaPage from '../parts/HeroAreaPage'
 
 export default class AboutUs extends Component {
   render() {
     return (
       <div> 
-<div className="page-header header-small">
-    <div className="container">
-    <div className="row">
-    <div className="col-md-12">
-    <div className="breadcrumb-wrapper">
-    <h2 className="product-title">About Us</h2>
-    <ol className="breadcrumb">
-    <li><a href="#">Home /</a></li>
-    <li className="current">About Us</li>
-    </ol>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+        <HeroAreaPage pageTitle="About Us" />
+
+    
 <div id="content" className="section-padding">
     <div className="container">
     <div className="row">
@@ -65,135 +59,11 @@ export default class AboutUs extends Component {
     
     <aside id="sidebar" className="col-lg-4 col-md-12 col-xs-12 right-sidebar">
     
-    <div className="widget_search">
-    <form id="search-form">
-    <input type="search" className="form-control" autoComplete="off" name="s" placeholder="Search..." id="search-input" />
-    <button type="submit" id="search-submit" className="search-btn"><i className="lni-search"></i></button>
-    </form>
-    </div>
-    
-    <div className="widget categories">
-    <h4 className="widget-title">All Categories</h4>
-    <ul className="categories-list">
-    <li>
-    <a href="#">
-    <i className="lni-dinner"></i>
-    Hotel and Travels <span className="category-counter">(5)</span>
-    </a>
-    </li>
-    <li>
-    <a href="#">
-    <i className="lni-control-panel"></i>
-    Services <span className="category-counter">(8)</span>
-    </a>
-     </li>
-    <li>
-    <a href="#">
-    <i className="lni-github"></i>
-    Pets <span className="category-counter">(2)</span>
-    </a>
-    </li>
-    <li>
-    <a href="#">
-    <i className="lni-coffee-cup"></i>
-    Restaurants <span className="category-counter">(3)</span>
-    </a>
-    </li>
-    <li>
-    <a href="#">
-    <i className="lni-home"></i>
-    Real Estate <span className="category-counter">(4)</span>
-    </a>
-    </li>
-    <li>
-    <a href="#">
-    <i className="lni-pencil"></i>
-    Jobs <span className="category-counter">(5)</span>
-    </a>
-    </li>
-    <li>
-    <a href="#">
-    <i className="lni-display"></i>
-    Electronics <span className="category-counter">(9)</span>
-    </a>
-    </li>
-    </ul>
-    </div>
-    
-    <div className="widget widget-popular-posts">
-    <h4 className="widget-title">Recent Posts</h4>
-    <ul className="posts-list">
-    <li>
-    <div className="widget-thumb">
-    <a href="#"><img src="assets/img/blog/thumb1.jpg" alt="" /></a>
-    </div>
-    <div className="widget-content">
-    <a href="#">Eum Iriure Dolor Duis Autem</a>
-    <span><i className="icon-calendar"></i>June 21, 2018</span>
-    </div>
-    <div className="clearfix"></div>
-    </li>
-    <li>
-    <div className="widget-thumb">
-    <a href="#"><img src="assets/img/blog/thumb2.jpg" alt="" /></a>
-    </div>
-    <div className="widget-content">
-    <a href="#">Consectetuer Adipiscing Elit</a>
-    <span><i className="icon-calendar"></i>June 18, 2018</span>
-    </div>
-    <div className="clearfix"></div>
-    </li>
-    <li>
-    <div className="widget-thumb">
-    <a href="#"><img src="assets/img/blog/thumb3.jpg" alt="" /></a>
-    </div>
-    <div className="widget-content">
-    <a href="#">Et Leggings Fanny Pack</a>
-    <span><i className="icon-calendar"></i>June 17, 2018</span>
-    </div>
-    <div className="clearfix"></div>
-    </li>
-    <li>
-    <div className="widget-thumb">
-    <a href="#"><img src="assets/img/blog/thumb4.jpg" alt="" /></a>
-    </div>
-    <div className="widget-content">
-    <a href="#">Exercitation Photo Booth</a>
-    <span><i className="icon-calendar"></i>June 12, 2018</span>
-    </div>
-    <div className="clearfix"></div>
-    </li>
-    <li>
-    <div className="widget-thumb">
-    <a href="#"><img src="assets/img/blog/thumb5.jpg" alt="" /></a>
-    </div>
-    <div className="widget-content">
-    <a href="#">Eum Iriure Dolor Duis Autem</a>
-    <span><i className="icon-calendar"></i>June 9, 2018</span>
-    </div>
-    <div className="clearfix"></div>
-    </li>
-    </ul>
-    </div>
-    
-    <div className="widget tag">
-    <h4 className="widget-title">Tag Cloud</h4>
-    <div className="tagcloud">
-    <a style={{fontSize:30}} href="#"> fashion</a>
-    <a href="#"> clothing</a>
-    <a href="#"> trends</a>
-    <a style={{fontSize:30}} href="#"> shoes</a>
-    <a style={{fontSize:30}} href="#"> man fashion</a>
-    <a href="#"> Sell Off</a>
-    <a style={{fontSize:30}} href="#">tops</a>
-    </div>
-    </div>
-    <div className="widget">
-    <h4 className="widget-title">Advertisement</h4>
-    <div className="add-box">
-    <img src="assets/img/img1.jpg" alt="" />
-    </div>
-    </div>
+      <WidgetSearch />
+      <WidgetCategories />    
+      <WidgetRecentPosts />
+      <WidgetTagCloud />
+      <WidgetAdvertisement />
     </aside>
     
     </div>
