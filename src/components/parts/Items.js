@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 export default class Items extends Component {
     render() {
         return (
-            <div className="adds-wrapper">
-            <div className="tab-content">
-            <div id="grid-view">
+    <div className="adds-wrapper">
+    <div className="tab-content">
+    <div id="grid-view">
     <div className="row">
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <div className="featured-box">

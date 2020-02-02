@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import HeroAreaSmall from '../parts/HeroAreaSmall'
-import WidgetSearch from '../parts/WidgetSearch'
-import WidgetRecentPosts from '../parts/WidgetRecentPosts'
-import WidgetCategories from '../parts/WidgetCategories'
-import WidgetTagCloud from '../parts/WidgetTagCloud'
-import WidgetAdvertisement from '../parts/WidgetAdvertisement'
+import WidgetSearch from '../widgets/WidgetSearch'
+import WidgetRecentPosts from '../widgets/WidgetRecentPosts'
+import WidgetCategories from '../widgets/WidgetCategories'
+import WidgetTagCloud from '../widgets/WidgetTagCloud'
+import WidgetAdvertisement from '../widgets/WidgetAdvertisement'
 import HeroAreaPage from '../parts/HeroAreaPage'
 
 export default class AboutUs extends Component {

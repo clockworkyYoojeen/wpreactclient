@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import HeaderAreaSmall from '../parts/HeroAreaSmall'
-import WidgetSearch from '../parts/WidgetSearch'
-import WidgetCategories from '../parts/WidgetCategories';
-import WidgetAdvertisement from '../parts/WidgetAdvertisement';
+import WidgetSearch from '../widgets/WidgetSearch'
+import WidgetCategories from '../widgets/WidgetCategories';
+import WidgetAdvertisement from '../widgets/WidgetAdvertisement';
 import ProductFilter from '../parts/ProductFilter';
 import Items from '../parts/Items';
-import Pagination from '../Pagination';
+import Pagination from '../parts/Pagination';
 
 export default class Categories extends Component {
+  componentDidMount(){
+    window.scrollTo(0,0)
+  }
   render() {
     return (
   <React.Fragment>

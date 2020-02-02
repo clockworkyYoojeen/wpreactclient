@@ -58,6 +58,7 @@ export default class App extends React.Component{
 <Route exact path="/blog" component={BlogPage} />
 <Route exact path="/about" component={AboutUs} />
 <Route exact path="/contact" component={Contact} />
+<Route exact path="/:id" component={AdsPage} />
 </Switch>
 </BrowserRouter>
         </header>

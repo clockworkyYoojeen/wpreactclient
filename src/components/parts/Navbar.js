@@ -6,7 +6,7 @@ export default class Navbar extends Component {
         lang: localStorage.getItem("lang")  || "ru"
     }
     changeLang = (e) => {
-      let lang = e.target.name;
+      let lang = e.target.dataset.name;
       this.props.changeLang(lang)
   }
   render() {
@@ -63,8 +63,8 @@ export default class Navbar extends Component {
         Language
         </Link>
         <div className="dropdown-menu">
-        <span className="dropdown-item" name="en" onClick={this.changeLang}>English</span>
-        <span className="dropdown-item" name="ru" onClick={this.changeLang}>Russian</span>
+        <span className="dropdown-item" data-name="en" onClick={this.changeLang}>English</span>
+        <span className="dropdown-item" data-name="ru" onClick={this.changeLang}>Russian</span>
         </div>
         </li>
         </ul>
