@@ -55,6 +55,13 @@ const rootReducer = (state = initState, action) => {
             loading: false
         }
     }
+    if (action.type === 'RECENT_FETCH') {
+        return {
+            ...state,
+            items: action.items,
+            loading: false
+        }
+    }
     // if (action.type === 'TOGGLE_LOADING') {
     //     return {
     //         ...state,

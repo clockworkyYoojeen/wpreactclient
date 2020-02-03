@@ -8,6 +8,9 @@ import Items from '../parts/Items';
 import Pagination from '../parts/Pagination';
 
 export default class Categories extends Component {
+  state = {
+    cat_id: this.props.match.params.cat_id
+  }
   componentDidMount(){
     window.scrollTo(0,0)
   }
@@ -31,7 +34,7 @@ export default class Categories extends Component {
       {/* main content */}
       <div className="col-lg-9 col-md-12 col-xs-12 page-content">
         <ProductFilter />
-        <Items />
+        <Items cat_id={this.state.cat_id} />
         <Pagination />
         </div>
     </div>

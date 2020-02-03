@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/parts/Navbar'
 import Home from './components/pages/Home'
 import AdsPage from './components/pages/AdsPage'
+import SingleAd from './components/pages/SingleAd'
 import Footer from './components/parts/Footer'
 import BlogPage from './components/pages/BlogPage'
 import AboutUs from './components/pages/AboutUs'
@@ -58,7 +59,8 @@ export default class App extends React.Component{
 <Route exact path="/blog" component={BlogPage} />
 <Route exact path="/about" component={AboutUs} />
 <Route exact path="/contact" component={Contact} />
-<Route exact path="/:id" component={AdsPage} />
+<Route exact path="/:cat_id" component={AdsPage} />
+<Route exact path="/product/:id" component={SingleAd} />
 </Switch>
 </BrowserRouter>
         </header>
