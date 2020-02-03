@@ -1,6 +1,6 @@
 export function getCategoriesInfo(lang = 'ru') {
     return (dispatch) => {
-        fetch(`http://wptest.cmssites.hosty.by/wp-json/wp/v2/categories?per_page=30&parent=0&_fields=name,children_info,cat_icon,slug,id&lang=${lang}`)
+        fetch(`http://wptest.cmssites.hosty.by/wp-json/wp/v2/categories?per_page=30&parent=0&_fields=name,children_info,cat_icon,slug,id,posts_num&lang=${lang}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(response.statusText);

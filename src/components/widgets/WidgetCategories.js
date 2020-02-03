@@ -23,7 +23,7 @@ class WidgetCategories extends Component {
                 return <li>
                 <Link to={`/${item.id}`}>
                 <i className={`${item.cat_icon}`}></i>
-                {item.name} <span className="category-counter">(5)</span>
+                {item.name} <span className="category-counter">({item.posts_num})</span>
                 </Link>
                 </li> 
                 }) : this.state.lang == 'ru' ? `Пока нет данных...` : `Sorry, no items yet...` 

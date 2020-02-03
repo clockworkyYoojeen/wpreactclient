@@ -10,7 +10,7 @@ class CategoriesFront extends Component {
     }
     componentDidMount(){
         let { lang } = this.state;
-        this.props.getCategoriesInfo(lang)
+        this.props.getCategoriesInfo(localStorage.getItem("lang") || "ru")
     }
     render() {
         const { items } = this.props
@@ -35,7 +35,7 @@ class CategoriesFront extends Component {
     <ul>
     {item.children_info.map((elem) => {
     let arr = elem.split('/');
-    return <li><Link to={`${item.id}?cat_id=${arr[1]}&slug=${item.slug}`}>{arr[0]}</Link></li>
+    return <li><Link to={`${item.id}?cat_id=${arr[1]}&slug=${item.slug}`}>{arr[0]}</Link><span className="category-counter">({arr[2]})</span></li>
 })}
     </ul>
     </div>

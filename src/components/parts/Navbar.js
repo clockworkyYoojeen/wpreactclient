@@ -30,11 +30,11 @@ export default class Navbar extends Component {
         Home
         </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
         <Link className="nav-link" to="/ads">
         Categories
         </Link>
-        </li>
+        </li> */}
         <li className="nav-item dropdown">
         </li>
         <li className="nav-item dropdown">
@@ -60,7 +60,8 @@ export default class Navbar extends Component {
         </li>
         <li className="nav-item dropdown">
         <Link className="nav-link dropdown-toggle" to="/blog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Language
+      {this.state.lang == 'en' ? `Language ` : `Язык `}
+      <img src={this.state.lang  == 'en' ? "/united-kingdom-flag-icon-32.png" : "/russia-flag-icon-32.png"} alt="flag" />
         </Link>
         <div className="dropdown-menu">
         <span className="dropdown-item" data-name="en" onClick={this.changeLang}>English</span>

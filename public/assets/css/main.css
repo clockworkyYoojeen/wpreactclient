@@ -1979,8 +1979,6 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .category-box .category-content li a {
-  display: flex;
-  align-items: center;
   color: #888;
 }
 
