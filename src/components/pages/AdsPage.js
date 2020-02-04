@@ -34,7 +34,7 @@ export default class Categories extends Component {
       {/* main content */}
       <div className="col-lg-9 col-md-12 col-xs-12 page-content">
         <ProductFilter />
-        <Items cat_id={this.state.cat_id} />
+        <Items cat_id={this.state.cat_id} location={this.props.location} />
         <Pagination />
         </div>
     </div>

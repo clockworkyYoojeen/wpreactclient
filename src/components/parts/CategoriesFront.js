@@ -35,7 +35,7 @@ class CategoriesFront extends Component {
     <ul>
     {item.children_info.map((elem) => {
     let arr = elem.split('/');
-    return <li><Link to={`${arr[1]}`}>{arr[0]}</Link><span className="category-counter">({arr[2]})</span></li>
+    return <li><Link to={`/category?cat_id=${arr[1]}`}>{arr[0]}</Link><span className="category-counter">({arr[2]})</span></li>
 })}
     </ul>
     </div>

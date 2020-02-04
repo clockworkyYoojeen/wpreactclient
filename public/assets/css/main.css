@@ -1386,8 +1386,9 @@ a.back-to-top:hover, a.back-to-top:focus {
 .featured-box figure {
   margin: 0;
   width: 100%;
-  float: left;
+  display: flex;
   position: relative;
+  justify-content: center;
 }
 
 .featured-box figure .icon i {

@@ -39,13 +39,13 @@ class RecentlyAdded extends Component{
                     <h4><Link to={`/product/${item.id}`}>{item.title.rendered}</Link></h4>
                         <ul className="address">
                         <li>
-                    <Link to="/"><i className="lni-map-marker"></i> {item.post_region[0]}</Link>
+                    <Link to={`/region/${item.region}`}><i className="lni-map-marker"></i> {item.post_region[0]}</Link>
                         </li>
                         <li>
                     <i className="lni-alarm-clock"></i> {item.date.slice(0,10)}
                         </li>
                         <li>
-                    <Link to="/"><i className="lni-user"></i> {item.post_author}</Link>
+                    <i className="lni-user"></i> {item.post_author}
                         </li>
                         <li>
                         {/* <Link to="/"><i className="lni-package"></i> Used</a> */}

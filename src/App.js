@@ -55,11 +55,11 @@ export default class App extends React.Component{
 <Navbar changeLang={this.changeLang} lang={this.state.lang} />
 <Switch>
 <Route exact path="/" component={Home} />
-<Route exact path="/ads" component={AdsPage} />
 <Route exact path="/blog" component={BlogPage} />
 <Route exact path="/about" component={AboutUs} />
 <Route exact path="/contact" component={Contact} />
-<Route exact path="/:cat_id" component={AdsPage} />
+<Route exact path="/category" component={AdsPage} />
+{/* <Route exact path="/region/:reg_id" component={AdsPage} /> */}
 <Route exact path="/product/:id" component={SingleAd} />
 </Switch>
 </BrowserRouter>
