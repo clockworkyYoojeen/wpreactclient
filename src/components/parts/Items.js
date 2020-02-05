@@ -26,6 +26,7 @@ class Items extends Component {
         indexOfFirstPost: 0
     }
     getResults = () => {
+        this.props.changeLoading()
         let cat_id = queryString.parse(this.props.location.search).cat_id
         let reg_id = queryString.parse(this.props.location.search).reg_id           
         let lang = this.state.lang
@@ -34,8 +35,10 @@ class Items extends Component {
     componentDidMount(){
         this.getResults()
     }
-    componentDidUpdate(){
-        this.getResults()
+    componentDidUpdate(prevProps){
+        if(!equal(this.props.location.search, prevProps.location.search)){
+            this.getResults()
+        }
     }
     paginate = (pageNumber) => {
         this.setState({

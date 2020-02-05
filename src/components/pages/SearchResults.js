@@ -35,7 +35,9 @@ class SearchResults extends Component{
         this.getResults()
     }
     componentDidUpdate(prevProps){
-            this.getResults()            
+        if(!equal(this.props.location.search, prevProps.location.search)){
+            this.getResults()
+        }            
     }
     render(){
         const { items } = this.props

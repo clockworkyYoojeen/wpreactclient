@@ -12,9 +12,9 @@ import { getRegions } from '../../actions/getRegionsAction'
 class HeroAreaSmall extends Component {
   state = {
     lang: localStorage.getItem("lang") || "ru",
-    search: null,
-    reg: null,
-    cat: null,
+    search: '',
+    reg: '',
+    cat: '',
     eng_regions: [
       'Brest region',
       'Vitebsk region',
@@ -56,7 +56,6 @@ handleCategory = (e) => {
   render() {
     const { regions } = this.props
     const { categories } = this.props
-    console.log(this.props)
     return (
         <div id="hero-area">
         <div className="overlay"></div>
