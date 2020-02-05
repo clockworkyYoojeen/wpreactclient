@@ -2,31 +2,51 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import  queryString  from 'query-string'
+import equal from 'fast-deep-equal'
+
+import Pagination from './Pagination'
 
 import { getItems } from '../../actions/getItemsAction'
 
 class Items extends Component {
     state = {
         lang: localStorage.getItem("lang")  || "ru",
-        loading: false
+        loading: false,
+        regions: {
+            23: 'Minsk region',
+            24: 'Brest region',
+            25: 'Grodno region',
+            26: 'Mogilev region',
+            27: 'Gomel region',
+            28: 'Vitebsk region'
+        },
+        currentPage: 1,
+        postsPerPage: 4,
+        indexOfLastPost: 4,
+        indexOfFirstPost: 0
     }
-    componentDidMount(){
-        let { lang } = this.state
+    getResults = () => {
         let cat_id = queryString.parse(this.props.location.search).cat_id
-        let reg_id = queryString.parse(this.props.location.search).reg_id
+        let reg_id = queryString.parse(this.props.location.search).reg_id           
+        let lang = this.state.lang
         this.props.getItems(cat_id, reg_id, lang)
     }
-    componentDidUpdate(prevProps){
-        if(this.props.location !== prevProps.location){
-            let cat_id = queryString.parse(this.props.location.search).cat_id
-            let reg_id = queryString.parse(this.props.location.search).reg_id           
-            let lang = this.state.lang
-            this.props.getItems(cat_id, reg_id, lang)
-        }
+    componentDidMount(){
+        this.getResults()
     }
-
+    componentDidUpdate(){
+        this.getResults()
+    }
+    paginate = (pageNumber) => {
+        this.setState({
+            ...this.state,
+            currentPage: pageNumber,
+            indexOfLastPost: pageNumber * this.state.postsPerPage,
+            indexOfFirstPost: (pageNumber * this.state.postsPerPage) - this.state.postsPerPage
+        })
+    }
     render() {
-        const { items } = this.props
+        let items = this.props.items.slice(this.state.indexOfFirstPost, this.state.indexOfLastPost)
         const { loading } = this.props
         return (
     <div className="adds-wrapper">
@@ -52,7 +72,7 @@ class Items extends Component {
     <h4><a href="ads-details.html">{item.title.rendered}</a></h4>
         <ul className="address">
         <li>
-        <Link to={`/category?reg_id=${item.region}`} onClick={this.update}><i className="lni-map-marker"></i> {item.post_region[0]}</Link>
+        <Link to={`/category?reg_id=${item.region}`} ><i className="lni-map-marker"></i> {this.state.lang == 'ru' ? item.post_region[0] : this.state.regions[item.region]}</Link>
         </li>
         <li>
         <i className="lni-alarm-clock"></i> {item.date.slice(0,10)}
@@ -76,6 +96,11 @@ class Items extends Component {
     </div>
     </div>
             </div>
+            <Pagination
+                postsPerPage={this.state.postsPerPage}
+                totalPosts={this.props.items.length}
+                paginate={this.paginate}
+            />
 </div>
         )
     }

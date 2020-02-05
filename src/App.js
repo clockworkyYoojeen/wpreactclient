@@ -13,6 +13,7 @@ import Footer from './components/parts/Footer'
 import BlogPage from './components/pages/BlogPage'
 import AboutUs from './components/pages/AboutUs'
 import Contact from './components/pages/Contact'
+import SearchResults from './components/pages/SearchResults'
 
 export default class App extends React.Component{
   state = {
@@ -59,6 +60,7 @@ export default class App extends React.Component{
 <Route exact path="/about" component={AboutUs} />
 <Route exact path="/contact" component={Contact} />
 <Route exact path="/category" component={AdsPage} />
+<Route exact path="/search" component={SearchResults} />
 {/* <Route exact path="/region/:reg_id" component={AdsPage} /> */}
 <Route exact path="/product/:id" component={SingleAd} />
 </Switch>

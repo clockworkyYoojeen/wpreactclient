@@ -16,12 +16,12 @@ class WidgetCategories extends Component {
         const { loading } = this.props
         return (
             <div className="widget categories">
-            <h4 className="widget-title">All Categories</h4>
+            <h4 className="widget-title">{this.state.lang == 'ru' ? 'Все Категории' : "All Categories"}</h4>
             <ul className="categories-list">
             {
                 (loading) ? (<img src="/808.gif" alt="preloader" class="preloader" />) : items.length ? items.map((item) => {
                 return <li>
-                <Link to={`/${item.id}`}>
+                <Link to={`/category?cat_id=${item.id}`}>
                 <i className={`${item.cat_icon}`}></i>
                 {item.name} <span className="category-counter">({item.posts_num})</span>
                 </Link>

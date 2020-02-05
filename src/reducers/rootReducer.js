@@ -62,12 +62,6 @@ const rootReducer = (state = initState, action) => {
             loading: false
         }
     }
-    // if (action.type === 'TOGGLE_LOADING') {
-    //     return {
-    //         ...state,
-    //         loading: false,
-    //     }
-    // }
     return state;
 }
 

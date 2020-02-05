@@ -27,7 +27,7 @@ export default class Navbar extends Component {
         <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown active">
         <Link className="nav-link dropdown-toggle" to="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Home
+        {this.state.lang == 'ru' ? 'Главная' : "Home"}
         </Link>
         </li>
         {/* <li className="nav-item">
@@ -39,7 +39,7 @@ export default class Navbar extends Component {
         </li>
         <li className="nav-item dropdown">
         <Link className="nav-link dropdown-toggle" to="/about" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        About Us
+        {this.state.lang == 'ru' ? 'О нас' : "About Us"}
         </Link>
         {/* <div className="dropdown-menu">
         <a className="dropdown-item" href="about.html">About Us</a>
@@ -55,7 +55,7 @@ export default class Navbar extends Component {
 
         <li className="nav-item">
         <Link className="nav-link" to="/contact">
-        Contact
+        {this.state.lang == 'ru' ? 'Контакты' : "Contacts"}
         </Link>
         </li>
         <li className="nav-item dropdown">
@@ -71,8 +71,8 @@ export default class Navbar extends Component {
         </ul>
         <ul className="sign-in">
         <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="lni-user"></i> My Account</a>
-        <div className="dropdown-menu">
+      <a className="nav-link dropdown-toggle" href="http://wptest.cmssites.hosty.by/wp-admin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="lni-user"></i> {this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
+        {/* <div className="dropdown-menu">
         <a className="dropdown-item" href="account-profile-setting.html"><i className="lni-home"></i> Account Home</a>
         <a className="dropdown-item" href="account-myads.html"><i className="lni-wallet"></i> My Ads</a>
         <a className="dropdown-item" href="account-favourite-ads.html"><i className="lni-heart"></i> Favourite ads</a>
@@ -81,11 +81,11 @@ export default class Navbar extends Component {
         <a className="dropdown-item" href="signup.html"><i className="lni-user"></i> Signup</a>
         <a className="dropdown-item" href="forgot-password.html"><i className="lni-reload"></i> Forgot Password</a>
         <a className="dropdown-item" href="account-close.html"><i className="lni-close"></i>Account close</a>
-        </div>
+        </div> */}
         </li>
         </ul>
-        <a className="tg-btn" href="post-ads.html">
-        <i className="lni-pencil-alt"></i> Post An Ad
+        <a className="tg-btn" href="http://wptest.cmssites.hosty.by/wp-admin">
+        <i className="lni-pencil-alt"></i> {this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}
         </a>
         </div>
         </div>
