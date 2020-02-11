@@ -64,7 +64,7 @@ class Items extends Component {
         {/* <div className="icon">
         <i className="lni-heart"></i>
         </div> */}
-        <Link to={`/product/${item.id}`}><img className="img-fluid" src={item.post_image} alt="image" /></Link>
+        <Link to={`/product?id=${item.id}`}><img className="img-fluid" src={item.post_image} alt="image" /></Link>
         </figure>
         <div className="feature-content">
         <div className="product">
@@ -72,7 +72,7 @@ class Items extends Component {
                     return <Link to={`/category?cat_id=${category.term_id}`}><i className="lni-folder"></i>{category.name} </Link>
                             })}
         </div>
-    <h4><a href="ads-details.html">{item.title.rendered}</a></h4>
+    <h4><Link to={`/product?id=${item.id}`}>{item.title.rendered.replace("&#039;", "'")}</Link></h4>
         <ul className="address">
         <li>
         <Link to={`/category?reg_id=${item.region}`} ><i className="lni-map-marker"></i> {this.state.lang == 'ru' ? item.post_region[0] : this.state.regions[item.region]}</Link>

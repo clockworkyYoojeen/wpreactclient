@@ -35,7 +35,6 @@ html {
 }
 
 body {
-  display: none;
   background: #fff;
   font-size: 14px;
   font-weight: 400;
@@ -58,6 +57,12 @@ img.preloader{
   margin-right: auto;
 }
 
+
+ul#mobileMenu{
+  visibility: hidden;
+  border: 1px solid red;
+  display: none;
+}
 h1, h2, h3, h4 {
   font-size: 36px;
   font-weight: 700;

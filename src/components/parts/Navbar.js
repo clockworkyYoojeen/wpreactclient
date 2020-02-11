@@ -9,9 +9,50 @@ export default class Navbar extends Component {
       let lang = e.target.dataset.name;
       this.props.changeLang(lang)
   }
+  handleMenu = (e) => {
+    e.target.classList.toggle('lni-menu')
+    e.target.classList.toggle('lni-close')
+
+    const mobileMenu = document.querySelector('#mobileMenu')
+    mobileMenu.classList.toggle('show')
+  }
+
   render() {
     return (
         <nav className="navbar navbar-expand-lg fixed-top scrolling-navbar">
+          <div className="mobile-toggler">
+              <i className="lni-menu" onClick={this.handleMenu}></i>
+          </div>
+                  <div className="mobile-menu-cont">
+                  <ul id="mobileMenu">
+        <li><i class="lni-check-mark-circle"></i>
+        <Link className="active" to="/">
+        {this.state.lang == 'ru' ? 'Главная' : "Home"}
+        </Link>
+        </li>
+        <li><i class="lni-check-mark-circle"></i>
+        <Link to="/about">{this.state.lang == 'ru' ? 'О нас' : "About Us"}</Link>
+        </li>
+        <li><i class="lni-check-mark-circle"></i>
+        <Link to="/contact">
+        {this.state.lang == 'ru' ? 'Контакты' : "Contacts"}
+        </Link>
+        </li>
+        <li><i class="lni-check-mark-circle"></i>
+        <span>{this.state.lang == 'ru' ? 'Язык' : "Language"}</span>
+        <ul className="dropdown">
+        <li><span className="dropdown-item" data-name="en" onClick={this.changeLang}>English</span></li>
+        <li><span className="dropdown-item" data-name="ru" onClick={this.changeLang}>Russian</span></li>
+        </ul>
+        </li>
+        <li><i class="lni-check-mark-circle"></i>
+        <a href="http://wptest.cmssites.hosty.by/wp-admin">{this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
+        </li>
+        <li><i class="lni-check-mark-circle"></i>
+        <a href="http://wptest.cmssites.hosty.by/wp-admin">{this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}</a>
+        </li>
+        </ul>
+        </div>
         <div className="container">
         
         <div className="navbar-header">
@@ -90,69 +131,7 @@ export default class Navbar extends Component {
         </div>
         </div>
         
-        <ul className="mobile-menu">
-        <li>
-        <a className="active" href="index.html">
-        Home
-        </a>
-        <ul className="dropdown">
-        <li><a href="index.html">Home 1</a></li>
-        <li><a href="index-2.html">Home 2</a></li>
-        <li><a className="active" href="index-3.html">Home 2</a></li>
-        </ul>
-        </li>
-        <li>
-        <a href="category.html">Categories</a>
-        </li>
-        <li>
-        <a href="#!">
-        Listings
-        </a>
-        <ul className="dropdown">
-        <li><a href="adlistinggrid.html">Ad Grid</a></li>
-        <li><a href="adlistinglist.html">Ad Listing</a></li>
-        <li><a href="ads-details.html">Listing Detail</a></li>
-        </ul>
-        </li>
-        <li>
-        <a href="#!">Pages</a>
-        <ul className="dropdown">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="ads-details.html">Ads Details</a></li>
-        <li><a href="post-ads.html">Ads Post</a></li>
-        <li><a href="pricing.html">Packages</a></li>
-        <li><a href="testimonial.html">Testimonial</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="404.html">404</a></li>
-        </ul>
-        </li>
-        <li>
-        <a href="blog.html">Blog</a>
-        <ul className="dropdown">
-        <li><a href="blog.html">Blog - Right Sidebar</a></li>
-        <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-        <li><a href="blog-grid-full-width.html"> Blog full width </a></li>
-        <li><a href="single-post.html">Blog Details</a></li>
-        </ul>
-        </li>
-        <li>
-        <a href="contact.html">Contact Us</a>
-        </li>
-        <li>
-        <a>My Account</a>
-        <ul className="dropdown">
-        <li><a href="account-profile-setting.html"><i className="lni-home"></i> Account Home</a></li>
-        <li><a href="account-myads.html"><i className="lni-wallet"></i> My Ads</a></li>
-        <li><a href="account-favourite-ads.html"><i className="lni-heart"></i> Favourite ads</a></li>
-        <li><a href="account-archived-ads.html"><i className="lni-folder"></i> Archived</a></li>
-        <li><a href="login.html"><i className="lni-lock"></i> Log In</a></li>
-        <li><a href="signup.html"><i className="lni-user"></i> Signup</a></li>
-        <li><a href="forgot-password.html"><i className="lni-reload"></i> Forgot Password</a></li>
-        <li><a href="account-close.html"><i className="lni-close"></i>Account close</a></li>
-        </ul>
-        </li>
-        </ul>
+
         
         </nav>
     );

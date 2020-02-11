@@ -1,7 +1,11 @@
 import React from 'react'
 import $ from 'jquery'
 import './assets/css/slicknav.css' 
-import './assets/js/jquery.slicknav.js'
+// import './assets/js/jquery.slicknav.js'
+import { connect } from 'react-redux'
+import { getRegions } from './actions/getRegionsAction'
+import { getCategories } from './actions/getCategoriesAction'
+
 
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -15,12 +19,15 @@ import AboutUs from './components/pages/AboutUs'
 import Contact from './components/pages/Contact'
 import SearchResults from './components/pages/SearchResults'
 
-export default class App extends React.Component{
+class App extends React.Component{
   state = {
     lang: localStorage.getItem("lang")  || "ru"
   }
   componentDidMount(){
     this.headerHandle()
+    let { lang } = this.state;
+    this.props.getRegions(lang)
+    this.props.getCategories(lang)
   }
   headerHandle(){
     $(window).on('scroll', function() {
@@ -30,15 +37,15 @@ export default class App extends React.Component{
           $('.scrolling-navbar').removeClass('top-nav-collapse');
       }
   });
-  $('.mobile-menu').slicknav({
-    prependTo: '.navbar-header',
-    parentTag: 'liner',
-    allowParentLinks: true,
-    duplicate: true,
-    label: '',
-    closedSymbol: '<i class="lni-chevron-right"></i>',
-    openedSymbol: '<i class="lni-chevron-down"></i>',
-  });
+  // $('.mobile-menu').slicknav({
+  //   prependTo: '.navbar-header',
+  //   parentTag: 'liner',
+  //   allowParentLinks: true,
+  //   duplicate: true,
+  //   label: '',
+  //   closedSymbol: '<i class="lni-chevron-right"></i>',
+  //   openedSymbol: '<i class="lni-chevron-down"></i>',
+  // });
   }
   changeLang = (lang) => {
     this.setState({
@@ -61,8 +68,7 @@ export default class App extends React.Component{
 <Route exact path="/contact" component={Contact} />
 <Route exact path="/category" component={AdsPage} />
 <Route exact path="/search" component={SearchResults} />
-{/* <Route exact path="/region/:reg_id" component={AdsPage} /> */}
-<Route exact path="/product/:id" component={SingleAd} />
+<Route exact path="/product" component={SingleAd} />
 </Switch>
 </BrowserRouter>
         </header>
@@ -71,3 +77,18 @@ export default class App extends React.Component{
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+      regions: state.regions,
+      loading: state.loading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getRegions: (lang) => { dispatch(getRegions(lang)) },
+      getCategories: (lang) => { dispatch(getCategories(lang)) },
+      changeLoading: () => { dispatch({ type: 'CHANGE_LOADER', loading: true }) }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)

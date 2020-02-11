@@ -48,7 +48,14 @@ class SearchResults extends Component{
             <div id="list-view" className="tab-pane fade active show">
     <div className="row">
         {
-            (loading) ? (<img src="/808.gif" alt="preloader" className="preloader" style={{marginTop: 180, marginBottom: 180}}/>) : items.length ? items.map((item) => {
+            (loading) ? (
+                <div style={{
+                    display: "flex",
+                    width: "100%",
+                    height: "400px",
+                    justifyContent: "center",
+                    alignItems: "center"}}><img src="/808.gif" alt="preloader" className="preloader" /></div>
+            ) : items.length ? items.map((item) => {
                 return <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div className="featured-box">
                 <figure>
@@ -85,7 +92,12 @@ class SearchResults extends Component{
                 </div>
                 </div>
                 </div>
-            }) : <div style={{paddingTop: 180, paddingBottom: 180}}>{this.state.lang == 'ru' ?  `Пока нет данных...` : `Sorry, no items yet...`}</div>
+            }) : <div style={{
+                display: "flex",
+                width: "100%",
+                height: "400px",
+                justifyContent: "center",
+                alignItems: "center"}}>{this.state.lang == 'ru' ?  `Пока нет данных...` : `Sorry, no items yet...`}</div>
         }
 
     </div>

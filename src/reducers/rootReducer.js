@@ -4,7 +4,8 @@ const initState = {
     regions: [],
     items: [],
     search_results: [],
-    loading: true
+    single: [],
+    loading: "gotcha!"
 }
 const rootReducer = (state = initState, action) => {
     if (action.type === 'CHANGE_LOADER') {
@@ -60,6 +61,13 @@ const rootReducer = (state = initState, action) => {
             ...state,
             items: action.items,
             loading: false
+        }
+    }
+    if (action.type === 'SINGLE_AD') {
+        return {
+            ...state,
+            single: action.items,
+            loading: "wooohoo"
         }
     }
     return state;

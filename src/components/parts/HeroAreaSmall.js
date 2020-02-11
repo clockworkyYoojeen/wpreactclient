@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 // import SearchResults from '../pages/SearchResults'
 
-import { getCategoriesInfo } from '../../actions/categoriesInfoAction'
-import { getRegions } from '../../actions/getRegionsAction'
+// import { getCategoriesInfo } from '../../actions/categoriesInfoAction'
+// import { getRegions } from '../../actions/getRegionsAction'
 
 
 class HeroAreaSmall extends Component {
@@ -26,8 +26,8 @@ class HeroAreaSmall extends Component {
   }
   componentDidMount(){
     let { lang } = this.state;
-    this.props.getRegions(lang)
-    this.props.getCategoriesInfo(lang)
+    // this.props.getRegions(lang)
+    // this.props.getCategoriesInfo(lang)
 }
   handleKeyword = (e) => {
     this.setState({
@@ -115,8 +115,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-      getRegions: (lang) => { dispatch(getRegions(lang)) },
-      getCategoriesInfo: (lang) => { dispatch(getCategoriesInfo(lang)) },
+      // getRegions: (lang) => { dispatch(getRegions(lang)) },
+      // getCategoriesInfo: (lang) => { dispatch(getCategoriesInfo(lang)) },
       changeLoading: () => { dispatch({ type: 'CHANGE_LOADER', loading: true }) }
   }
 }
