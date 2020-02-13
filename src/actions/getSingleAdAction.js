@@ -1,6 +1,6 @@
 export function getSingleAd(id, lang = 'ru') {
     return (dispatch) => {
-        fetch(`http://wptest.cmssites.hosty.by/wp-json/wp/v2/posts/101`)
+        fetch(`http://wptest.cmssites.hosty.by/wp-json/wp/v2/posts/${id}?lang=${lang}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(response.statusText);

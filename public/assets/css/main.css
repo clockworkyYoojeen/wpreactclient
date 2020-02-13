@@ -2542,6 +2542,11 @@ ul#mobileMenu.show{
 
 .details-box .product-img {
   position: relative;
+  display: flex;
+  justify-content: center;
+}
+.details-box .product-img img{
+  width: 55%;
 }
 
 .details-box .price {

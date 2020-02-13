@@ -67,7 +67,7 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state,
             single: action.items,
-            loading: "wooohoo"
+            loading: false
         }
     }
     return state;
