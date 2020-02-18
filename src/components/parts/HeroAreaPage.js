@@ -9,10 +9,10 @@ export default class HeroAreaPage extends Component {
     <div className="col-md-12">
     <div className="breadcrumb-wrapper">
         <h2 className="product-title">{this.props.pageTitle}</h2>
-    <ol className="breadcrumb">
+    {/* <ol className="breadcrumb">
     <li><a href="#">Home /</a></li>
     <li className="current">About Us</li>
-    </ol>
+    </ol> */}
     </div>
     </div>
     </div>

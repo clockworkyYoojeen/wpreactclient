@@ -2624,6 +2624,7 @@ ul#mobileMenu.show{
 
 .details-box .ads-btn a {
   margin-right: 5px;
+  margin-bottom: 18px;
 }
 
 .details-box .ads-btn a i {
@@ -2632,6 +2633,7 @@ ul#mobileMenu.show{
 
 .details-box .ads-btn .btn-reply {
   background: #0d79bf;
+  margin-bottom: 18px;
 }
 
 .details-box .share span {

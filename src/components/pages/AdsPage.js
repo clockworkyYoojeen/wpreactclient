@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  queryString  from 'query-string'
 import HeaderAreaSmall from '../parts/HeroAreaSmall'
 import WidgetSearch from '../widgets/WidgetSearch'
 import WidgetCategories from '../widgets/WidgetCategories';
@@ -8,7 +9,7 @@ import Items from '../parts/Items';
 
 export default class Categories extends Component {
   state = {
-    cat_id: this.props.match.params.cat_id
+    cat_id: queryString.parse(this.props.location.search).cat_id
   }
   componentDidMount(){
     window.scrollTo(0,0)
@@ -22,7 +23,6 @@ export default class Categories extends Component {
     <div className="row">
     <div className="col-lg-3 col-md-12 col-xs-12 page-sidebar">
 <aside>
-  <WidgetSearch />
   <WidgetCategories />
   <WidgetAdvertisement />
 </aside>
@@ -31,7 +31,6 @@ export default class Categories extends Component {
     
       {/* main content */}
       <div className="col-lg-9 col-md-12 col-xs-12 page-content">
-        <ProductFilter />
         <Items cat_id={this.state.cat_id} location={this.props.location} />
         </div>
     </div>

@@ -5,13 +5,18 @@ import equal from 'fast-deep-equal'
 
 
 import HeroAreaSmall from '../parts/HeroAreaSmall'
+import Pagination from '../parts/Pagination'
+
 import { connect } from 'react-redux'
 import { getSearchRes } from '../../actions/getSearchResAction'
+
+const Entities = require('html-entities').XmlEntities
 
 class SearchResults extends Component{
     state = {
         lang: localStorage.getItem("lang")  || "ru",
         loading: false,
+        entities: new Entities(),
         regions: {
             23: 'Minsk region',
             24: 'Brest region',
@@ -20,6 +25,10 @@ class SearchResults extends Component{
             27: 'Gomel region',
             28: 'Vitebsk region'
         },
+        currentPage: 1,
+        postsPerPage: 4,
+        indexOfLastPost: 4,
+        indexOfFirstPost: 0
     }
     getResults = () => {
         window.scrollTo(0, 0)
@@ -39,8 +48,17 @@ class SearchResults extends Component{
             this.getResults()
         }            
     }
+    paginate = (pageNumber) => {
+        window.scrollTo(0,0)
+        this.setState({
+            ...this.state,
+            currentPage: pageNumber,
+            indexOfLastPost: pageNumber * this.state.postsPerPage,
+            indexOfFirstPost: (pageNumber * this.state.postsPerPage) - this.state.postsPerPage
+        })
+    }
     render(){
-        const { items } = this.props
+        let items = this.props.items.slice(this.state.indexOfFirstPost, this.state.indexOfLastPost)
         const { loading } = this.props
         return(
             <React.Fragment>
@@ -62,7 +80,7 @@ class SearchResults extends Component{
                 <div className="icon">
                 <i className="lni-heart"></i>
                 </div>
-                <a href="#"><img className="img-fluid" src={item.post_image} alt="image" /></a>
+                <Link to={`/product?id=${item.id}&cat_id=${item.post_category[0].term_id}`}><img className="img-fluid" src={item.post_image} alt="image" /></Link>
                 </figure>
                 <div className="feature-content">
                 <div className="product">
@@ -70,10 +88,10 @@ class SearchResults extends Component{
                     return <Link to={`/category?cat_id=${category.term_id}`}><i className="lni-folder"></i>{category.name} </Link>
                             })}
                 </div>
-            <h4><a href="ads-details.html">{item.title.rendered}</a></h4>
+            <h4><Link to={`/product?id=${item.id}&cat_id=${item.post_category[0].term_id}`}>{this.state.entities.decode(item.title.rendered)}</Link></h4>
                 <ul className="address">
                 <li>
-            <a href="#"><i className="lni-map-marker"></i> {this.state.lang == 'ru' ? item.post_region[0] : this.state.regions[item.region]}</a>
+            <Link to={`/category?reg_id=${item.region}`}><i className="lni-map-marker"></i> {this.state.lang == 'ru' ? item.post_region[0] : this.state.regions[item.region]}</Link>
                 </li>
                 <li>
                 <i className="lni-alarm-clock"></i> {item.date.slice(0,10)}
@@ -101,7 +119,13 @@ class SearchResults extends Component{
         }
 
     </div>
+    <Pagination
+                postsPerPage={this.state.postsPerPage}
+                totalPosts={this.props.items.length}
+                paginate={this.paginate}
+            />
     </div>
+    <br />
             </React.Fragment>
         )
     }

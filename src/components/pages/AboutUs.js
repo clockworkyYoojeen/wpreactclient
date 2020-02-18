@@ -22,7 +22,7 @@ export default class AboutUs extends Component {
     <div className="blog-post single-post">
     
     <div className="post-thumb">
-    <a href="#"><img className="img-fluid" src="assets/img/blog/blog1.jpg" alt="" /></a>
+    <img className="img-fluid" src="assets/img/blog/blog1.jpg" alt="" />
     <div className="hover-wrap">
     </div>
     </div>

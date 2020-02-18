@@ -5,14 +5,14 @@ export default class Footer extends Component {
     return (
         <footer>
     
-        <section className="footer-Content">
+        {/* <section className="footer-Content">
         <div className="container">
         <div className="row">
         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
         <div className="widget">
         <p className="footer-logo"><img src="assets/img/logo.png" alt="" /></p>
         <div className="textwidget">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est, et euismod purus suscipit quis. Etiam euismod ornare elementum. Sed ex est, consectetur eget facilisis sed, auctor ut purus.</p>
+        <p>Lorem ipsum dolor s ex est, consectetur eget facilisis sed purus.</p>
         </div>
         </div>
         </div>
@@ -47,39 +47,9 @@ export default class Footer extends Component {
         </ul>
         </div>
         </div>
-        <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-        <div className="widget">
-        <h3 className="block-title">Help and Support</h3>
-        <ul className="menu">
-        <li><a href="#">Live Chat</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Purchase Protection</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">Contact us</a></li>
-        </ul>
         </div>
         </div>
-        <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-        <div className="widget">
-        <h3 className="block-title">Subscribe us</h3>
-        <p className="text-sub">We have over 5 years of experience Our suppoer avalable to help you 24 hours a day, seven days week</p>
-        <form method="post" id="subscribe-form" name="subscribe-form" className="validate">
-        <div className="form-group is-empty">
-        <input type="email"  name="Email" className="form-control" id="EMAIL" placeholder="Email address" required="" />
-        <button type="submit" name="subscribe" id="subscribes" className="btn btn-common sub-btn"><i className="lni-check-box"></i></button>
-        <div className="clearfix"></div>
-        </div>
-        </form>
-        <ul className="footer-social">
-        <li><a className="facebook" href="#"><i className="lni-facebook-filled"></i></a></li>
-        <li><a className="twitter" href="#"><i className="lni-twitter-filled"></i></a></li>
-        <li><a className="google-plus" href="#"><i className="lni-google-plus"></i></a></li>
-        </ul>
-        </div>
-        </div>
-        </div>
-        </div>
-        </section>
+        </section> */}
         
         
         <div id="copyright">

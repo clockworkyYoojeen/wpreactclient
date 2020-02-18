@@ -4,8 +4,9 @@ const initState = {
     regions: [],
     items: [],
     search_results: [],
+    recent: [],
     single: [],
-    loading: "gotcha!"
+    loading: true
 }
 const rootReducer = (state = initState, action) => {
     if (action.type === 'CHANGE_LOADER') {
@@ -59,7 +60,7 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'RECENT_FETCH') {
         return {
             ...state,
-            items: action.items,
+            recent: action.items,
             loading: false
         }
     }

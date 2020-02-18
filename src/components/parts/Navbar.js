@@ -46,10 +46,10 @@ export default class Navbar extends Component {
         </ul>
         </li>
         <li><i class="lni-check-mark-circle"></i>
-        <a href="http://wptest.cmssites.hosty.by/wp-admin">{this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
+        <a href="http://wptest.cmssites.hosty.by/wp-login">{this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
         </li>
         <li><i class="lni-check-mark-circle"></i>
-        <a href="http://wptest.cmssites.hosty.by/wp-admin">{this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}</a>
+        <a href="http://wptest.cmssites.hosty.by/wp-login">{this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}</a>
         </li>
         </ul>
         </div>
@@ -112,7 +112,7 @@ export default class Navbar extends Component {
         </ul>
         <ul className="sign-in">
         <li className="nav-item dropdown">
-      <a className="nav-link dropdown-toggle" href="http://wptest.cmssites.hosty.by/wp-admin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="lni-user"></i> {this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
+      <a className="nav-link dropdown-toggle" href="http://wptest.cmssites.hosty.by/wp-login.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="lni-user"></i> {this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
         {/* <div className="dropdown-menu">
         <a className="dropdown-item" href="account-profile-setting.html"><i className="lni-home"></i> Account Home</a>
         <a className="dropdown-item" href="account-myads.html"><i className="lni-wallet"></i> My Ads</a>
@@ -125,7 +125,7 @@ export default class Navbar extends Component {
         </div> */}
         </li>
         </ul>
-        <a className="tg-btn" href="http://wptest.cmssites.hosty.by/wp-admin">
+        <a className="tg-btn" href="http://wptest.cmssites.hosty.by/wp-login.php">
         <i className="lni-pencil-alt"></i> {this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}
         </a>
         </div>

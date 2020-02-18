@@ -1,63 +1,53 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getRecentAds } from '../../actions/getRecentPostsAction'
+const Entities = require('html-entities').XmlEntities
 
-export default class WidgetRecentPosts extends Component{
+class WidgetRecentPosts extends Component{
+    state = {
+        lang: localStorage.getItem("lang")  || "ru",
+        entities: new Entities(),
+    }
     render(){
+        const { lang } = this.state
+        const { items }  = this.props
+        const { loading } = this.props
         return(
             <div className="widget widget-popular-posts">
-            <h4 className="widget-title">Recent Posts</h4>
+            <h4 className="widget-title">{lang == 'ru' ? `Свежие Объявления` : `Recent Posts`}</h4>
             <ul className="posts-list">
-            <li>
-            <div className="widget-thumb">
-            <a href="#"><img src="assets/img/blog/thumb1.jpg" alt="" /></a>
-            </div>
-            <div className="widget-content">
-            <a href="#">Eum Iriure Dolor Duis Autem</a>
-            <span><i className="icon-calendar"></i>June 21, 2018</span>
-            </div>
-            <div className="clearfix"></div>
-            </li>
-            <li>
-            <div className="widget-thumb">
-            <a href="#"><img src="assets/img/blog/thumb2.jpg" alt="" /></a>
-            </div>
-            <div className="widget-content">
-            <a href="#">Consectetuer Adipiscing Elit</a>
-            <span><i className="icon-calendar"></i>June 18, 2018</span>
-            </div>
-            <div className="clearfix"></div>
-            </li>
-            <li>
-            <div className="widget-thumb">
-            <a href="#"><img src="assets/img/blog/thumb3.jpg" alt="" /></a>
-            </div>
-            <div className="widget-content">
-            <a href="#">Et Leggings Fanny Pack</a>
-            <span><i className="icon-calendar"></i>June 17, 2018</span>
-            </div>
-            <div className="clearfix"></div>
-            </li>
-            <li>
-            <div className="widget-thumb">
-            <a href="#"><img src="assets/img/blog/thumb4.jpg" alt="" /></a>
-            </div>
-            <div className="widget-content">
-            <a href="#">Exercitation Photo Booth</a>
-            <span><i className="icon-calendar"></i>June 12, 2018</span>
-            </div>
-            <div className="clearfix"></div>
-            </li>
-            <li>
-            <div className="widget-thumb">
-            <a href="#"><img src="assets/img/blog/thumb5.jpg" alt="" /></a>
-            </div>
-            <div className="widget-content">
-            <a href="#">Eum Iriure Dolor Duis Autem</a>
-            <span><i className="icon-calendar"></i>June 9, 2018</span>
-            </div>
-            <div className="clearfix"></div>
-            </li>
+                {
+                    loading ? (<img src="/808.gif" />) : items.length ? (items.map((item) => {
+                        return <li>
+                        <div className="widget-thumb">
+                        <Link to={`/product/${item.id}`}><img className="img-fluid" src={item.post_image} alt="image" /></Link>
+                        </div>
+                        <div className="widget-content">
+                        <Link to={`/product?id=${item.id}&cat_id=${item.post_category[0].term_id}`}>{this.state.entities.decode(item.title.rendered)}</Link>
+                        <span><i className="icon-calendar"></i>{item.date.slice(0,10)}</span>
+                        </div>
+                        <div className="clearfix"></div>
+                        </li>
+                    })) : lang == 'ru' ? `Пока нет данных...` : `Sorry, no items yet...`
+                }
             </ul>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        items: state.recent,
+        loading: state.loading
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // getRecentAds: (lang) => { dispatch(getRecentAds(lang)) },
+        changeLoading: () => { dispatch({ type: 'CHANGE_LOADER', loading: true }) }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(WidgetRecentPosts)

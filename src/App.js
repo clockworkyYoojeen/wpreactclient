@@ -5,6 +5,8 @@ import './assets/css/slicknav.css'
 import { connect } from 'react-redux'
 import { getRegions } from './actions/getRegionsAction'
 import { getCategories } from './actions/getCategoriesAction'
+import { getRecentAds } from './actions/getRecentPostsAction'
+
 
 
 
@@ -28,6 +30,7 @@ class App extends React.Component{
     let { lang } = this.state;
     this.props.getRegions(lang)
     this.props.getCategories(lang)
+    this.props.getRecentAds(lang)
   }
   headerHandle(){
     $(window).on('scroll', function() {
@@ -88,6 +91,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
       getRegions: (lang) => { dispatch(getRegions(lang)) },
       getCategories: (lang) => { dispatch(getCategories(lang)) },
+      getRecentAds: (lang) => { dispatch(getRecentAds(lang)) },
       changeLoading: () => { dispatch({ type: 'CHANGE_LOADER', loading: true }) }
   }
 }

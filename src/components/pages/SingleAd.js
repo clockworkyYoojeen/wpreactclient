@@ -3,13 +3,18 @@ import HeroAreaPage from '../parts/HeroAreaPage'
 
 import { Link } from 'react-router-dom'
 import  queryString  from 'query-string'
+import equal from 'fast-deep-equal'
 import { connect } from 'react-redux'
+
 import { getSingleAd } from '../../actions/getSingleAdAction'
 import RelatedAds from '../parts/RelatedAds'
+const Entities = require('html-entities').XmlEntities
 
 class SingleAd extends Component {
     state = {
         lang: localStorage.getItem("lang")  || "ru",
+        entities: new Entities(),
+        cat_id: queryString.parse(this.props.location.search).cat_id,
         regions: {
             23: 'Minsk region',
             24: 'Brest region',
@@ -21,16 +26,25 @@ class SingleAd extends Component {
     }
     componentDidMount(){
         this.props.changeLoading()
-        let id = queryString.parse(this.props.location.search).id
+        const id = queryString.parse(this.props.location.search).id
         this.props.getSingleAd(id, this.state.lang)
+        fetch(`http://wptest.cmssites.hosty.by/wp-json/wpreactapp/v1/manage-views?id=${id}`, {method: 'POST'})
     }
+    componentDidUpdate(prevProps){
+        if(!equal(this.props.location.search, prevProps.location.search)){
+        window.scrollTo(0,0)
+        const id = queryString.parse(this.props.location.search).id
+        this.props.getSingleAd(id, this.state.lang)
+        fetch(`http://wptest.cmssites.hosty.by/wp-json/wpreactapp/v1/manage-views?id=${id}`, {method: 'POST'})
+      }
+      }
     render() {
         const { single } = this.props
         let { loading } = this.props
         
         return (
             <div>
-              <HeroAreaPage />
+              <HeroAreaPage/>
 
               {(loading) ? (<img src="/808.gif" class="preloader" alt="preloader" />) : 
             Object.keys(single).length !== 0 ? <div className="section-padding">
@@ -51,13 +65,13 @@ class SingleAd extends Component {
             <div className="col-lg-5 col-md-12 col-xs-12">
             <div className="details-box">
             <div className="ads-details-info">
-        <h2>{single.title.rendered}</h2>
+        <h2>{this.state.entities.decode(single.title.rendered)}</h2>
         <p className="mb-2" style={{overflowWrap: "break-word"}}>{single.custom_excerpt}</p>
             
             <div className="details-meta">
-        <span><a href="#"><i className="lni-alarm-clock"></i> {single.date.slice(0,10)}</a></span>
-        <span><a href="#"><i className="lni-map-marker"></i>{this.state.lang == 'ru' ? single.post_region[0] : this.state.regions[single.region]}</a></span>
-            <span><a href="#"><i className="lni-eye"></i> 299 View</a></span>
+        <span><i className="lni-alarm-clock"></i> {single.date.slice(0,10)}</span>
+        <span><Link to={`/category?reg_id=${single.region}`}><i className="lni-map-marker"></i>{this.state.lang == 'ru' ? single.post_region[0] : this.state.regions[single.region]}</Link></span>
+            <span><i className="lni-eye"></i> {single.viewsCounter} View</span>
             </div>
         <h4 className="title-small mb-3">{this.state.lang == 'en' ? `Specification:` : `Детали:`}</h4>
              <ul className="list-specification">
@@ -82,17 +96,16 @@ class SingleAd extends Component {
                             })}</p>
             </li>
             <li>
-            <p><strong><i className="lni-archive"></i> Condition:</strong> New</p>
+                        <p><strong><i className="lni-archive"></i> {this.state.lang == `en` ? `Condition` : `Состояние`}:</strong> {single.condition}</p>
             </li>
             <li>
-            <p><strong><i className="lni-package"></i> Brand:</strong> <a href="#">Apple</a></p>
             </li>
             </ul>
             <div className="ads-btn mb-4">
-            <a href="#" className="btn btn-common btn-reply"><i className="lni-envelope"></i> Email</a>
-            <a href="#" className="btn btn-common"><i className="lni-phone-handset"></i> 01154256643</a>
+                        <a href="#" className="btn btn-common btn-reply"><i className="lni-envelope"></i> {single.email}</a>
+                        <a href="#" className="btn btn-common"><i className="lni-phone-handset"></i> {single.phone}</a>
             </div>
-            <div className="share">
+            {/* <div className="share">
             <span>Share: </span>
             <div className="social-link">
             <a className="facebook" href="#"><i className="lni-facebook-filled"></i></a>
@@ -100,7 +113,7 @@ class SingleAd extends Component {
             <a className="linkedin" href="#"><i className="lni-linkedin-fill"></i></a>
             <a className="google" href="#"><i className="lni-google-plus"></i></a>
             </div>
-            </div>
+            </div> */}
             </div>
             </div>
     </div>
@@ -110,13 +123,13 @@ class SingleAd extends Component {
     <div className="row">
     <div className="col-lg-8 col-md-6 col-xs-12">
     <div className="description">
-    <h4>Description</h4>
+        <h4>{this.state.lang == `en` ? 'Description' : `Описание`}</h4>
     <p style={{overflowWrap: "break-word"}}>{single.custom_excerpt}</p>
 
     </div>
     </div>
     <div className="col-lg-4 col-md-6 col-xs-12">
-    <div className="short-info">
+    {/* <div className="short-info">
     <h4>Short Info</h4>
     <ul>
     <li><a href="#"><i className="lni-users"></i> More ads by <span>User</span></a></li>
@@ -124,13 +137,13 @@ class SingleAd extends Component {
     <li><a href="#"><i className="lni-reply"></i> Send to a friend</a></li>
     <li><a href="#"><i className="lni-warning"></i> Report this ad</a></li>
     </ul>
+    </div> */}
     </div>
     </div>
     </div>
     </div>
-    </div>
-    </div> : `Sorry, no items yet...`}
-    <RelatedAds />  
+    </div> : this.state.lang == `en` ? `Sorry, no items yet...` : `Пока нет данных...`}
+    <RelatedAds cat_id={this.state.cat_id}/>  
             </div>
         )
     }
@@ -139,7 +152,7 @@ class SingleAd extends Component {
 const mapStateToProps = (state) => {
     return {
         single: state.single,
-        loading: state.loading
+        loading: state.loading,
     }
 }
 

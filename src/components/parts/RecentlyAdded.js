@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getRecentAds } from '../../actions/getRecentPostsAction'
+const Entities = require('html-entities').XmlEntities
+
 
 class RecentlyAdded extends Component{
     state = {
-        lang: localStorage.getItem("lang")  || "ru"
-    }
-    componentDidMount(){
-        let { lang } = this.state
-        this.props.getRecentAds(lang)
+        lang: localStorage.getItem("lang")  || "ru",
+        entities: new Entities(),
     }
     render(){
         const { lang } = this.state
-        const { items } = this.props
+        const { items }  = this.props
         const { loading } = this.props
         return(
             <section className="featured section-padding bg-drack">
@@ -36,7 +34,7 @@ class RecentlyAdded extends Component{
                     return <Link to={`/${category.term_id}`}><i className="lni-folder"></i>{category.name} </Link>
                             })}
                         </div>
-                    <h4><Link to={`/product/${item.id}`}>{item.title.rendered}</Link></h4>
+                    <h4><Link to={`/product?id=${item.id}&cat_id=${item.post_category[0].term_id}`}>{this.state.entities.decode(item.title.rendered)}</Link></h4>
                         <ul className="address">
                         <li>
                     <Link to={`/region/${item.region}`}><i className="lni-map-marker"></i> {item.post_region[0]}</Link>
@@ -69,14 +67,14 @@ class RecentlyAdded extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items,
+        items: state.recent,
         loading: state.loading
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getRecentAds: (lang) => { dispatch(getRecentAds(lang)) },
+        // getRecentAds: (lang) => { dispatch(getRecentAds(lang)) },
         changeLoading: () => { dispatch({ type: 'CHANGE_LOADER', loading: true }) }
     }
 }
