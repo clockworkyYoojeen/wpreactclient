@@ -13,6 +13,7 @@ const Entities = require('html-entities').XmlEntities
 class SingleAd extends Component {
     state = {
         lang: localStorage.getItem("lang")  || "ru",
+        favs: localStorage.getItem("favs") ? JSON.parse(localStorage.getItem("favs")) : [],
         entities: new Entities(),
         cat_id: queryString.parse(this.props.location.search).cat_id,
         regions: {
@@ -38,9 +39,22 @@ class SingleAd extends Component {
         fetch(`http://wptest.cmssites.hosty.by/wp-json/wpreactapp/v1/manage-views?id=${id}`, {method: 'POST'})
       }
       }
+    addToFavs = (e) => {
+        const { favs } = this.state
+        const id = e.target.dataset.id
+        if(!favs.includes(id)){
+            favs.push(id)
+            localStorage.setItem('favs', JSON.stringify(favs))
+            e.target.classList.add('fav')
+            alert(this.state.lang == 'en' ? `Added to your favourites` : `Добавлено в избранные`)
+        }else{
+            alert(this.state.lang == 'en' ? `You've already added to your favourites` : `Вы добавляли ранее`)
+        }
+    }
     render() {
         const { single } = this.props
         let { loading } = this.props
+        const { favs } = this.state
         
         return (
             <div>
@@ -64,6 +78,9 @@ class SingleAd extends Component {
             </div>
             <div className="col-lg-5 col-md-12 col-xs-12">
             <div className="details-box">
+            <div className="icon">
+                <i className={favs.includes(String(single.id)) ? `lni-heart fav` : `lni-heart`} onClick={this.addToFavs} data-id={single.id}></i>
+            </div>
             <div className="ads-details-info">
         <h2>{this.state.entities.decode(single.title.rendered)}</h2>
         <p className="mb-2" style={{overflowWrap: "break-word"}}>{single.custom_excerpt}</p>

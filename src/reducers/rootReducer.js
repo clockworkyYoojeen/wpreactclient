@@ -3,6 +3,7 @@ const initState = {
     categoriesInfo: [],
     regions: [],
     items: [],
+    favourites: [],
     search_results: [],
     recent: [],
     single: [],
@@ -61,6 +62,13 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state,
             recent: action.items,
+            loading: false
+        }
+    }
+    if (action.type === 'FAV_FETCH') {
+        return {
+            ...state,
+            favourites: action.items,
             loading: false
         }
     }

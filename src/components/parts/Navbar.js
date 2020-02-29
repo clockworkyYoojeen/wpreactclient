@@ -25,31 +25,31 @@ export default class Navbar extends Component {
           </div>
                   <div className="mobile-menu-cont">
                   <ul id="mobileMenu">
-        <li><i class="lni-check-mark-circle"></i>
+        <li><i className="lni-check-mark-circle"></i>
         <Link className="active" to="/">
-        {this.state.lang == 'ru' ? 'Главная' : "Home"}
+        {this.state.lang === 'ru' ? 'Главная' : "Home"}
         </Link>
         </li>
-        <li><i class="lni-check-mark-circle"></i>
-        <Link to="/about">{this.state.lang == 'ru' ? 'О нас' : "About Us"}</Link>
+        <li><i className="lni-check-mark-circle"></i>
+        <Link to="/about">{this.state.lang === 'ru' ? 'О нас' : "About Us"}</Link>
         </li>
-        <li><i class="lni-check-mark-circle"></i>
+        <li><i className="lni-check-mark-circle"></i>
         <Link to="/contact">
-        {this.state.lang == 'ru' ? 'Контакты' : "Contacts"}
+        {this.state.lang === 'ru' ? 'Контакты' : "Contacts"}
         </Link>
         </li>
-        <li><i class="lni-check-mark-circle"></i>
-        <span>{this.state.lang == 'ru' ? 'Язык' : "Language"}</span>
+        <li><i className="lni-check-mark-circle"></i>
+        <span>{this.state.lang === 'ru' ? 'Язык' : "Language"}</span>
         <ul className="dropdown">
         <li><span className="dropdown-item" data-name="en" onClick={this.changeLang}>English</span></li>
         <li><span className="dropdown-item" data-name="ru" onClick={this.changeLang}>Russian</span></li>
         </ul>
         </li>
-        <li><i class="lni-check-mark-circle"></i>
-        <a href="http://wptest.cmssites.hosty.by/wp-login">{this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
+        <li><i className="lni-check-mark-circle"></i>
+        <Link to="/favourite">{this.state.lang === 'ru' ? 'Избранные' : "My Favourite"}</Link>
         </li>
-        <li><i class="lni-check-mark-circle"></i>
-        <a href="http://wptest.cmssites.hosty.by/wp-login">{this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}</a>
+        <li><i className="lni-check-mark-circle"></i>
+        <a href="http://wptest.cmssites.hosty.by/wp-login">{this.state.lang === 'ru' ? 'Объявление' : "Post an Add"}</a>
         </li>
         </ul>
         </div>
@@ -68,7 +68,7 @@ export default class Navbar extends Component {
         <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown active">
         <Link className="nav-link dropdown-toggle" to="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {this.state.lang == 'ru' ? 'Главная' : "Home"}
+        {this.state.lang === 'ru' ? 'Главная' : "Home"}
         </Link>
         </li>
         {/* <li className="nav-item">
@@ -80,7 +80,7 @@ export default class Navbar extends Component {
         </li>
         <li className="nav-item dropdown">
         <Link className="nav-link dropdown-toggle" to="/about" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {this.state.lang == 'ru' ? 'О нас' : "About Us"}
+        {this.state.lang === 'ru' ? 'О нас' : "About Us"}
         </Link>
         {/* <div className="dropdown-menu">
         <a className="dropdown-item" href="about.html">About Us</a>
@@ -96,13 +96,13 @@ export default class Navbar extends Component {
 
         <li className="nav-item">
         <Link className="nav-link" to="/contact">
-        {this.state.lang == 'ru' ? 'Контакты' : "Contacts"}
+        {this.state.lang === 'ru' ? 'Контакты' : "Contacts"}
         </Link>
         </li>
         <li className="nav-item dropdown">
         <Link className="nav-link dropdown-toggle" to="/blog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {this.state.lang == 'en' ? `Language ` : `Язык `}
-      <img src={this.state.lang  == 'en' ? "/united-kingdom-flag-icon-32.png" : "/russia-flag-icon-32.png"} alt="flag" />
+      {this.state.lang === 'en' ? `Language ` : `Язык `}
+      <img src={this.state.lang  === 'en' ? "/united-kingdom-flag-icon-32.png" : "/russia-flag-icon-32.png"} alt="flag" />
         </Link>
         <div className="dropdown-menu">
         <span className="dropdown-item" data-name="en" onClick={this.changeLang}>English</span>
@@ -112,7 +112,7 @@ export default class Navbar extends Component {
         </ul>
         <ul className="sign-in">
         <li className="nav-item dropdown">
-      <a className="nav-link dropdown-toggle" href="http://wptest.cmssites.hosty.by/wp-login.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="lni-user"></i> {this.state.lang == 'ru' ? 'Мой кабинет' : "My Account"}</a>
+      <Link className="nav-link dropdown-toggle" to="/favourite" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="lni-user"></i> {this.state.lang === 'ru' ? 'Избранные' : "My Favourites"}</Link>
         {/* <div className="dropdown-menu">
         <a className="dropdown-item" href="account-profile-setting.html"><i className="lni-home"></i> Account Home</a>
         <a className="dropdown-item" href="account-myads.html"><i className="lni-wallet"></i> My Ads</a>
@@ -126,7 +126,7 @@ export default class Navbar extends Component {
         </li>
         </ul>
         <a className="tg-btn" href="http://wptest.cmssites.hosty.by/wp-login.php">
-        <i className="lni-pencil-alt"></i> {this.state.lang == 'ru' ? 'Объявление' : "Post an Add"}
+        <i className="lni-pencil-alt"></i> {this.state.lang === 'ru' ? 'Объявление' : "Post an Add"}
         </a>
         </div>
         </div>

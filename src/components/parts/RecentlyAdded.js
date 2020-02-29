@@ -16,22 +16,22 @@ class RecentlyAdded extends Component{
         return(
             <section className="featured section-padding bg-drack">
             <div className="container">
-        <h2 className="section-title">{lang == 'ru' ? `свежие объявления` : `recently added`}</h2>
+        <h2 className="section-title">{lang === 'ru' ? `свежие объявления` : `recently added`}</h2>
             <div className="row">
                 {
-                    loading ? (<img src="/808.gif" />) : items.length ? (items.map((item) => {
-                return <div className="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                    loading ? (<img src="/808.gif" alt="logo" />) : items.length ? (items.map((item, i) => {
+                return <div key={i} className="col-xs-6 col-sm-6 col-md-6 col-lg-4">
                         <div className="featured-box">
                         <figure>
-                        <div className="icon">
+                        {/* <div className="icon">
                         <i className="lni-heart"></i>
-                        </div>
-                        <Link to={`/product/${item.id}`}><img className="img-fluid" src={item.post_image} alt="image" /></Link>
+                        </div> */}
+                        <Link to={`/product/${item.id}`}><img className="img-fluid" src={item.post_image} alt="logo" /></Link>
                         </figure>
                         <div className="feature-content">
                         <div className="product">
-                            {item.post_category.map((category)=> {
-                    return <Link to={`/${category.term_id}`}><i className="lni-folder"></i>{category.name} </Link>
+                            {item.post_category.map((category, i)=> {
+                    return <Link key={i} to={`/${category.term_id}`}><i className="lni-folder"></i>{category.name} </Link>
                             })}
                         </div>
                     <h4><Link to={`/product?id=${item.id}&cat_id=${item.post_category[0].term_id}`}>{this.state.entities.decode(item.title.rendered)}</Link></h4>
@@ -56,7 +56,7 @@ class RecentlyAdded extends Component{
                         </div>
                         </div>
                         </div>
-                    })) : lang == 'ru' ? `Пока нет данных...` : `Sorry, no items yet...`
+                    })) : lang === 'ru' ? `Пока нет данных...` : `Sorry, no items yet...`
                 }
             </div>
             </div>

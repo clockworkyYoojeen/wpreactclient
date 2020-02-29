@@ -9,6 +9,7 @@ const Entities = require('html-entities').XmlEntities
 class RelatedAds extends Component {
   state = {
     lang: localStorage.getItem("lang")  || "ru",
+    favs: JSON.parse(localStorage.getItem("favs")) || [],
     entities: new Entities(),
     regions: {
       23: 'Minsk region',
@@ -26,17 +27,18 @@ class RelatedAds extends Component {
   render() {
     const items = this.props.items.slice(0, 3)
     const { loading } = this.props
+    const { favs } = this.state
     return (
         <section className="featured-lis section-padding">
         <div className="container">
-    <h3 className="section-title">{this.state.lang == 'en' ? `Featured Products` : `Похожие объявления`}</h3>
+    <h3 className="section-title">{this.state.lang === 'en' ? `Featured Products` : `Похожие объявления`}</h3>
         <div className="row">
           {
             (loading) ? (<img src="/808.gif" class="preloader" alt="preloader" />) : items.length ? items.map(item => {
               return <div className="col-lg-4 col-md-6 col-xs-12">
               <div className="product-item">
               <div className="carousel-thumb">
-              <img className="img-fluid" src={item.post_image} alt="image" />
+              <img className="img-fluid" src={item.post_image} alt="advertisement" />
               <div className="overlay">
               </div>
               </div>
@@ -54,18 +56,18 @@ class RelatedAds extends Component {
               </div>
               <div className="card-text">
               <div className="float-left">
-              <Link to={`/category?reg_id=${item.region}`}><i className="lni-map-marker"></i> {this.state.lang == 'ru' ? item.post_region[0] : this.state.regions[item.region]}</Link>
+              <Link to={`/category?reg_id=${item.region}`}><i className="lni-map-marker"></i> {this.state.lang === 'ru' ? item.post_region[0] : this.state.regions[item.region]}</Link>
               </div>
               <div className="float-right">
               <div className="icon">
-              <i className="lni-heart"></i>
+              <i className={favs.includes(String(item.id)) ? `lni-heart fav` : `lni-heart`} style={{borderRadius: "50%"}}></i>
               </div>
               </div>
               </div>
               </div>
               </div>
               </div>
-            }) : this.state.lang == 'en' ? `Sorry, no items yet...` : `Пока нет данных...` 
+            }) : this.state.lang === 'en' ? `Sorry, no items yet...` : `Пока нет данных...` 
               
               
           }

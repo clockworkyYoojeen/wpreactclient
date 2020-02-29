@@ -16,10 +16,10 @@ import Home from './components/pages/Home'
 import AdsPage from './components/pages/AdsPage'
 import SingleAd from './components/pages/SingleAd'
 import Footer from './components/parts/Footer'
-import BlogPage from './components/pages/BlogPage'
 import AboutUs from './components/pages/AboutUs'
 import Contact from './components/pages/Contact'
 import SearchResults from './components/pages/SearchResults'
+import FavouriteAdds from './components/pages/FavouriteAdds'
 
 class App extends React.Component{
   state = {
@@ -66,12 +66,12 @@ class App extends React.Component{
 <Navbar changeLang={this.changeLang} lang={this.state.lang} />
 <Switch>
 <Route exact path="/" component={Home} />
-<Route exact path="/blog" component={BlogPage} />
 <Route exact path="/about" component={AboutUs} />
 <Route exact path="/contact" component={Contact} />
 <Route exact path="/category" component={AdsPage} />
 <Route exact path="/search" component={SearchResults} />
 <Route exact path="/product" component={SingleAd} />
+<Route exact path="/favourite" component={FavouriteAdds} />
 </Switch>
 </BrowserRouter>
         </header>

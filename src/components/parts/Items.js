@@ -14,6 +14,7 @@ const Entities = require('html-entities').XmlEntities
 class Items extends Component { 
     state = {
         lang: localStorage.getItem("lang")  || "ru",
+        favs: JSON.parse(localStorage.getItem("favs")) || [],
         loading: false,
         cat_id: queryString.parse(this.props.location.search).cat_id,
         reg_id: queryString.parse(this.props.location.search).reg_id, 
@@ -58,6 +59,7 @@ class Items extends Component {
     render() {
         let items = this.props.items.slice(this.state.indexOfFirstPost, this.state.indexOfLastPost)
         const { loading } = this.props
+        const { favs } = this.state
         return ( <React.Fragment>
     <div className="product-filter">
     <div className="short-name">
@@ -105,6 +107,11 @@ class Items extends Component {
         </ul>
         <div className="listing-bottom">
     <h3 className="price float-left">${item.price}</h3>
+    <div className="float-right">
+              <div className="icon">
+              <i className={favs.includes(String(item.id)) ? `lni-heart fav` : `lni-heart`} style={{borderRadius: "50%"}}></i>
+              </div>
+              </div>
         </div>
         </div>
         </div>

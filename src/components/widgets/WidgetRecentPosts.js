@@ -18,8 +18,8 @@ class WidgetRecentPosts extends Component{
             <h4 className="widget-title">{lang == 'ru' ? `Свежие Объявления` : `Recent Posts`}</h4>
             <ul className="posts-list">
                 {
-                    loading ? (<img src="/808.gif" />) : items.length ? (items.map((item) => {
-                        return <li>
+                    loading ? (<img src="/808.gif" />) : items.length ? (items.map((item, i) => {
+                        return <li key={i}>
                         <div className="widget-thumb">
                         <Link to={`/product/${item.id}`}><img className="img-fluid" src={item.post_image} alt="image" /></Link>
                         </div>

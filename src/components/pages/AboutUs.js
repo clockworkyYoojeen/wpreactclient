@@ -22,7 +22,7 @@ export default class AboutUs extends Component {
     <div className="blog-post single-post">
     
     <div className="post-thumb">
-    <img className="img-fluid" src="assets/img/blog/blog1.jpg" alt="" />
+    <img className="img-fluid" src="assets/img/blog/blog1.jpg" alt="cool" />
     <div className="hover-wrap">
     </div>
     </div>
@@ -44,7 +44,7 @@ export default class AboutUs extends Component {
     <div className="share-items">
     <ul className="list-inline">
     <li>Share : </li>
-    <li className="fb-share"><a href="#="><i className="lni-facebook-filled"></i></a></li>
+    <li className="fb-share"><i className="lni-facebook-filled"></i></li>
     <li className="tw-share"><a href="#"><i className="lni-twitter-filled"></i></a></li>
     <li className="gplus-share"><a href="#"><i className="lni-google-plus"></i></a></li>
     <li className="pinit-share"><a href="#"><i className="fa fa-pinterest"></i></a></li>
