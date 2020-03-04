@@ -54,7 +54,7 @@ class HeroAreaBig extends Component {
         </div>
         <div className="col-lg-4 col-md-4">
         <div className="select">
-        <select id="region-select" onChange={this.handleRegion}>
+        <select id="region-select" onChange={this.handleRegion} >
         <option value="">{this.state.lang === "en" ? `All locations` : `Все области`}</option>
         {regions.map((item, i) => {
               return <option key={i} value={item.id}>{this.state.lang === "ru" ? item.name : this.state.eng_regions[i]}</option>

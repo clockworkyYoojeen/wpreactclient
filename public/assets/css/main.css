@@ -56,7 +56,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 50px;
+  top: 16px;
   right: 55px;
   border: 1px solid #00bcd4;
   visibility: hidden;
@@ -871,6 +871,10 @@ ul#mobileMenu.show{
   }
   #mobile-menu {
     display: none;
+  }
+  #region-select{
+    width: 100%;
+    padding-left: 12px;
   }
   .slicknav_menu {
     display: block;

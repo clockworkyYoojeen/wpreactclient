@@ -11,7 +11,7 @@ export default class AboutUs extends Component {
   render() {
     return (
       <div> 
-        <HeroAreaPage pageTitle="About Us" />
+        <HeroAreaPage pageTitle={localStorage.getItem("lang") == 'en' ? `About Us` : `О нас`} />
 
     
 <div id="content" className="section-padding">
@@ -59,7 +59,7 @@ export default class AboutUs extends Component {
     
     <aside id="sidebar" className="col-lg-4 col-md-12 col-xs-12 right-sidebar">
     
-      <WidgetSearch />
+      {/* <WidgetSearch /> */}
       <WidgetCategories />    
       <WidgetRecentPosts />
       <WidgetTagCloud />

@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 
 export default class Navbar extends Component {
     state = {
-        lang: localStorage.getItem("lang")  || "ru"
+        lang: localStorage.getItem("lang")  || "ru",
     }
     changeLang = (e) => {
       let lang = e.target.dataset.name;
       this.props.changeLang(lang)
   }
-  handleMenu = (e) => {
-    e.target.classList.toggle('lni-menu')
-    e.target.classList.toggle('lni-close')
+  handleMenu = () => {
+    const menuToggler = document.querySelector('.mobile-toggler i')
+    menuToggler.classList.toggle('lni-menu')
+    menuToggler.classList.toggle('lni-close')
 
     const mobileMenu = document.querySelector('#mobileMenu')
     mobileMenu.classList.toggle('show')
@@ -26,15 +27,15 @@ export default class Navbar extends Component {
                   <div className="mobile-menu-cont">
                   <ul id="mobileMenu">
         <li><i className="lni-check-mark-circle"></i>
-        <Link className="active" to="/">
+        <Link onClick={this.handleMenu} className="active" to="/">
         {this.state.lang === 'ru' ? 'Главная' : "Home"}
         </Link>
         </li>
         <li><i className="lni-check-mark-circle"></i>
-        <Link to="/about">{this.state.lang === 'ru' ? 'О нас' : "About Us"}</Link>
+        <Link onClick={this.handleMenu} to="/about">{this.state.lang === 'ru' ? 'О нас' : "About Us"}</Link>
         </li>
         <li><i className="lni-check-mark-circle"></i>
-        <Link to="/contact">
+        <Link onClick={this.handleMenu} to="/contact">
         {this.state.lang === 'ru' ? 'Контакты' : "Contacts"}
         </Link>
         </li>
@@ -46,7 +47,7 @@ export default class Navbar extends Component {
         </ul>
         </li>
         <li><i className="lni-check-mark-circle"></i>
-        <Link to="/favourite">{this.state.lang === 'ru' ? 'Избранные' : "My Favourite"}</Link>
+        <Link onClick={this.handleMenu} to="/favourite">{this.state.lang === 'ru' ? 'Избранные' : "My Favourite"}</Link>
         </li>
         <li><i className="lni-check-mark-circle"></i>
         <a href="http://wptest.cmssites.hosty.by/wp-login">{this.state.lang === 'ru' ? 'Объявление' : "Post an Add"}</a>
@@ -67,7 +68,7 @@ export default class Navbar extends Component {
         <div className="collapse navbar-collapse" id="main-navbar">
         <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown active">
-        <Link className="nav-link dropdown-toggle" to="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <Link  className="nav-link dropdown-toggle" to="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {this.state.lang === 'ru' ? 'Главная' : "Home"}
         </Link>
         </li>

@@ -26,7 +26,7 @@ class RecentlyAdded extends Component{
                         {/* <div className="icon">
                         <i className="lni-heart"></i>
                         </div> */}
-                        <Link to={`/product/${item.id}`}><img className="img-fluid" src={item.post_image} alt="logo" /></Link>
+                        <Link to={`/product?id=${item.id}&cat_id=${item.post_category[0].term_id}`}><img className="img-fluid" src={item.post_image} alt="logo" /></Link>
                         </figure>
                         <div className="feature-content">
                         <div className="product">
